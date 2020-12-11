@@ -1,0 +1,22 @@
+﻿@import "colors";
+
+/* font styles */
+* {
+    font: 16px Arial, sans-serif;
+    font-weight: normal;
+    line-height: 150%;
+    color: $text-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.card {
+    .accent {
+        text-transform: uppercase;
+        font-weight: 600;
+        color: $card-accent;
+    }
+}

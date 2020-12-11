@@ -1,0 +1,45 @@
+﻿@import "colors";
+
+.card {
+    // display: flex;
+    // flex-direction: column;
+    background-color: $card-bg;
+    width: 21%;
+    padding: 5px 10px;
+    border: solid $card-accent;
+    border-width: 0 5px 5px 0;
+    margin:15px 0;
+
+    .card--heading {
+        line-height: 110%;
+        width: 100%;
+        border-bottom: 2px solid $border-color;
+        align-self: center;
+    }
+
+    .card--content {
+        font-size: 13px;
+        font-weight: 600;
+        height:50px;
+    }
+
+    .accent {
+        display: block;
+
+        &.card--category {
+            margin-top:1rem;
+        }
+        &.card--qty{
+            text-align:right;
+            margin-bottom:1rem;
+        }
+    }
+}
+
+
+@media screen and (max-width:767px){
+    .card {
+        width: 100%;
+        margin: 15px 0;
+    }
+}

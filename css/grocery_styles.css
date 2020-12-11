@@ -1,0 +1,135 @@
+/* assembles all scss files into a single css file */
+/* modern reset css by Andy Bell, sets base element styles to render same across browsers */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0; }
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none; }
+
+/* Set core root defaults */
+html {
+  scroll-behavior: smooth; }
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5; }
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto; }
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block; }
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit; }
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important; } }
+
+/* font styles */
+* {
+  font: 16px Arial, sans-serif;
+  font-weight: normal;
+  line-height: 150%;
+  color: #2c3a47; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 36px;
+  font-weight: bold; }
+
+.card .accent {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #e17055; }
+
+body {
+  background-color: #ffffff; }
+
+main {
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  align-items: stretch;
+  height: max-content; }
+
+@media screen and (min-width: 768px) {
+  main {
+    padding-left: 15px;
+    padding-right: 15px; } }
+
+@media screen and (min-width: 1025px) {
+  main {
+    width: 980px;
+    max-width: 980px;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0; } }
+
+.card {
+  background-color: #fff4d5;
+  width: 21%;
+  padding: 5px 10px;
+  border: solid #e17055;
+  border-width: 0 5px 5px 0;
+  margin: 15px 0; }
+  .card .card--heading {
+    line-height: 110%;
+    width: 100%;
+    border-bottom: 2px solid #999999;
+    align-self: center; }
+  .card .card--content {
+    font-size: 13px;
+    font-weight: 600;
+    height: 50px; }
+  .card .accent {
+    display: block; }
+    .card .accent.card--category {
+      margin-top: 1rem; }
+    .card .accent.card--qty {
+      text-align: right;
+      margin-bottom: 1rem; }
+
+@media screen and (max-width: 767px) {
+  .card {
+    width: 100%;
+    margin: 15px 0; } }
