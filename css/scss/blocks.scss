@@ -1,4 +1,6 @@
 ﻿@import "colors";
+@import "animations";
+
 
 .card {
     // display: flex;
@@ -9,12 +11,23 @@
     border: solid $card-accent;
     border-width: 0 5px 5px 0;
     margin:15px 0;
+    position: relative;
+    animation-name: showcards;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    
+
+    &.card--hidden{
+        display: none;
+    }
 
     .card--heading {
         line-height: 110%;
         width: 100%;
         border-bottom: 2px solid $border-color;
         align-self: center;
+        backface-visibility: hidden;
     }
 
     .card--content {

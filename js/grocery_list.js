@@ -3,7 +3,10 @@
 /* make these  global variables so that they can be accessed throughout the page */
 let itemList = "";
 let groceries;
+let sortedList;
+let container = document.getElementById("grocery_list_container");
 
+/* get the list on page load then render it */
 (function () {
 
     fetch("../_App_Data/grocery_list.json")
@@ -15,12 +18,27 @@ let groceries;
             buildList();
         });
 
-    function buildList(sorted) {
-        var container = document.getElementById("grocery_list_container");
+})();
 
-        for (let item of groceries) {
-            var index = groceries.indexOf(item) + 1; // index +1 to avoid potential html order and tabindex rules. order and tabindex not necessary until sorting.
-            var itemTemplate = `<div class="card" role="listitem" style="order:${index};" tabindex="${index}">
+function buildList(sortBy) {
+    /* initialize the list with the original grocery list.
+     * re-render the list if sorted. 
+     * future goal is to see if we can just traverse the DOM and change the order attribute using the sorted list instead of re-rendering.
+     * screen reader compatiblity may force to keep this function instead of changing the order live */
+
+    /* reset the template and the page, otherwise the rendered list will keep compounding */
+    //container.querySelectorAll("div").forEach(n => n.remove()); // not needed. will be replaced at the end of the function.
+    itemList = '';
+
+    if (sortBy === ('groceries' || 'undefined')) {
+        sortedList = groceries;
+    } else {
+        sortedList = groceries.sort(compareValues(sortBy));
+    }
+
+    for (let item of sortedList) {
+        var index = sortedList.indexOf(item) + 1; // index +1 to avoid potential html order and tabindex rules. order and tabindex not necessary until sorting.
+        var itemTemplate = `<div class="card card--hidden" role="listitem" style="order:${index};" tabindex="${index}">
                 <!-- check that rearranging order does not break accessibility, so added tabindex to for screen readers to read same order as visual -->
                 <span class="card--qty accent">
                     QTY: ${item.qty}
@@ -36,21 +54,24 @@ let groceries;
                 </span>
             </div>`;
 
-            itemList += itemTemplate;
-        }
-        container.innerHTML = itemList;
+        itemList += itemTemplate;
     }
+    //render list
+    container.innerHTML = itemList;
+ 
+    showCards(container);
+}
 
-})();
-
-function sortList(sortBy) {
-    /* goal of this function is to find the items in the list and modify the order of presentation in the flexbox an allow unique css animation. 
-     * If it presents an issue for screen readers, then we could alternately just re-render the list, purging the old list. */
-    var sortedList = groceries.sort(compareValues(sortBy));
+// show list my individual items
+function showCards(container) {
     var cards = document.getElementsByClassName('card');
-
-    console.log(sortedList);
-    console.log(cards);
+    var timer = 1;
+    for (let element of cards) {
+        setTimeout(function () {
+            return element.classList.remove("card--hidden");
+        }, 750 * timer);
+        timer++;
+    }
 }
 
 function compareValues(key, order = 'asc') {

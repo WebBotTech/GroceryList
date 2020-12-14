@@ -1,0 +1,17 @@
+@keyframes showcards {
+    0% {
+        opacity: 0;
+        width:0px;
+        height:0px;
+        overflow:hidden;
+        right:0;
+        transform: rotateY(180deg);
+        transform: translateX(right);
+    }
+
+    100% {
+        opacity: 1;
+        right:0;
+        transform: rotateY(360deg);
+    }
+}

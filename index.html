@@ -19,14 +19,17 @@
         <h1 id="grocery_heading">Grocery List</h1>
         <p>
             Sort by:
-            <input type="radio" name="viewSort" id="sortItem" value="item" onclick="javascript: sortList('item');" />
+            <input type="radio" name="viewSort" id="sortItem" value="item" onclick="javascript: buildList('item');" />
             <label for="sortItem">Item</label>
             &nbsp;|&nbsp;
-            <input type="radio" name="viewSort" id="sortBrand" value="brand" onclick="javascript: sortList('brand');" />
+            <input type="radio" name="viewSort" id="sortBrand" value="brand" onclick="javascript: buildList('brand');" />
             <label for="sortBrand">Brand</label>
             &nbsp;|&nbsp;
-            <input type="radio" name="viewSort" id="sortCategory" value="category" onclick="javascript: sortList('category');" />
+            <input type="radio" name="viewSort" id="sortCategory" value="category" onclick="javascript: buildList('category');" />
             <label for="sortCategory">Category</label>
+            &nbsp;|&nbsp;
+            <input type="radio" name="viewSort" id="sortDefault" value="default" onclick="javascript: buildList('groceries');" checked />
+            <label for="sortDefault">Default</label>
         </p>
         <div id="grocery_list_container" class="flex-container" role="list" aria-describedby="grocery_heading">
             <!-- this container to be filled from buildList() function that pulls content from a data file. 
